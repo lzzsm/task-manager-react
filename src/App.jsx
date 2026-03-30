@@ -13,7 +13,7 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  // SE QUISER, VOCÊ PODE USAR UMA API PARA PEGARA AS TAREFAS
+  // API PARA PEGAR AS TAREFAS
   //  useEffect(() => {
   //    const fetchTasks = async () => {
   //      const response = await fetch(
