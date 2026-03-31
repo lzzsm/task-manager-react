@@ -42,15 +42,21 @@ function App() {
   }
 
   function onDeleteTaskClick(taskId) {
-    const newTasks = tasks.filter((task) => task.id !== taskId);
-    setTasks(newTasks);
+    const confirmDelete = window.confirm(
+      "Tem certeza que deseja excluir esta tarefa?",
+    );
+    if (confirmDelete) {
+      const newTasks = tasks.filter((task) => task.id !== taskId);
+      setTasks(newTasks);
+    }
   }
 
-  function onTaskAddSubmit(title, description) {
+  function onTaskAddSubmit(title, description, expirationDate) {
     const newTask = {
       id: v4(),
       title,
       description,
+      expirationDate,
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);

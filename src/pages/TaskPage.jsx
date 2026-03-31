@@ -8,6 +8,7 @@ function TaskPage() {
   const [searchParams] = useSearchParams();
   const title = searchParams.get("title");
   const description = searchParams.get("description");
+  const expirationDate = searchParams.get("expirationDate");
 
   return (
     <div className="h-screen w-screen bg-slate-500 p-6">
@@ -22,8 +23,9 @@ function TaskPage() {
           <Title>Detalhes da Tarefa</Title>
         </div>
 
-        <div className="bg-slate-200 p-4 rounded-md">
+        <div className="bg-slate-200 p-4 rounded-md space-y-4">
           <h2 className="text-xl font-bold text-slate-600">{title}</h2>
+          <p className="text-slate-600"><b>Data de Expiração:</b> {expirationDate}</p>
           <p className="text-slate-600">{description}</p>
         </div>
       </div>
