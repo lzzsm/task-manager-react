@@ -19,12 +19,12 @@ function TaskPage() {
       <div className="h-screen w-screen bg-slate-500 p-6 flex justify-center">
         <div className="space-y-6 w-125 flex flex-col items-center justify-center">
           <Title>Tarefa não encontrada.</Title>
-          <button
+          <Button
             onClick={() => navigate("/")}
-            className="bg-slate-400 text-center w-50% flex justify-center items-center gap-2 text-white p-2 rounded-md"
+            className="text-center w-50 flex justify-center items-center gap-2"
           >
             Voltar para o início
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -34,12 +34,12 @@ function TaskPage() {
     <div className="h-screen w-screen bg-slate-500 p-6">
       <div className="w-125 mx-auto space-y-4">
         <div className="flex justify-center relative mb-6">
-          <button
+          <Button
             onClick={() => navigate(-1)}
-            className="absolute left-0 top-0 bottom-0 text-slate-100"
+            className="absolute left-0 top-0 bottom-0 text-slate-100 bg-transparent"
           >
             <ChevronLeftIcon />
-          </button>
+          </Button>
           <Title>Detalhes da Tarefa</Title>
         </div>
 

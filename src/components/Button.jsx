@@ -1,7 +1,18 @@
-function Button(props) {
+function Button({
+  children,
+  className = "",
+  onClick,
+  type = "button",
+  ...rest
+}) {
   return (
-    <button className="bg-slate-400 text-white p-2 rounded-md" {...props}>
-      {props.children}
+    <button
+      type={type}
+      onClick={onClick}
+      className={`bg-slate-400 text-white p-2 rounded-md ${className}`}
+      {...rest}
+    >
+      {children}
     </button>
   );
 }
