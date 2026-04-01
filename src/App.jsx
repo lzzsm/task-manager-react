@@ -1,44 +1,27 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { v4 } from "uuid";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
-import { v4 } from "uuid";
 import Title from "./components/Title";
+import TaskPage from "./pages/TaskPage";
 
-function App() {
-  const [tasks, setTasks] = useState(
-    JSON.parse(localStorage.getItem("tasks")) || [],
-  );
+function HomePage() {
+  const [tasks, setTasks] = useState(() => {
+    const stored = localStorage.getItem("tasks");
+    return stored ? JSON.parse(stored) : [];
+  });
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  // API PARA PEGAR AS TAREFAS
-  //  useEffect(() => {
-  //    const fetchTasks = async () => {
-  //      const response = await fetch(
-  //        "https://jsonplaceholder.typicode.com/todos?_limit=10",
-  //        {
-  //          method: "GET",
-  //        },
-  //      );
-  //      const data = await response.json();
-  //      setTasks(data);
-  //    };
-  //    fetchTasks();
-  //  }, []);
-
   function onTaskClick(taskId) {
-    const newTasks = tasks.map((task) => {
-      if (task.id === taskId) {
-        return {
-          ...task,
-          isCompleted: !task.isCompleted,
-        };
-      }
-      return task;
-    });
-    setTasks(newTasks);
+    setTasks(
+      tasks.map((task) =>
+        task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task,
+      ),
+    );
   }
 
   function onDeleteTaskClick(taskId) {
@@ -46,20 +29,15 @@ function App() {
       "Tem certeza que deseja excluir esta tarefa?",
     );
     if (confirmDelete) {
-      const newTasks = tasks.filter((task) => task.id !== taskId);
-      setTasks(newTasks);
+      setTasks(tasks.filter((task) => task.id !== taskId));
     }
   }
 
   function onTaskAddSubmit(title, description, expirationDate) {
-    const newTask = {
-      id: v4(),
-      title,
-      description,
-      expirationDate,
-      isCompleted: false,
-    };
-    setTasks([...tasks, newTask]);
+    setTasks([
+      ...tasks,
+      { id: v4(), title, description, expirationDate, isCompleted: false },
+    ]);
   }
 
   return (
@@ -77,4 +55,13 @@ function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/task/:id" element={<TaskPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}

@@ -11,11 +11,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
   const navigate = useNavigate();
 
   function onSeeDetailsClick(task) {
-    const query = new URLSearchParams();
-    query.set("title", task.title);
-    query.set("description", task.description);
-    query.set("expirationDate", task.expirationDate);
-    navigate(`/task?${query.toString()}`);
+    navigate(`/task/${task.id}`);
   }
 
   return (
