@@ -7,7 +7,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
-function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
+function Tasks({ tasks, onTaskToggle, onTaskDelete }) {
   const navigate = useNavigate();
 
   function onSeeDetailsClick(task) {
@@ -18,7 +18,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
     <ul className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
       {tasks.map((task) => (
         <li key={task.id} className="flex gap-2">
-          <Button onClick={() => onTaskClick(task.id)}>
+          <Button onClick={() => onTaskToggle(task.id)}>
             {task.isCompleted ? <SquareCheckBig /> : <Square />}
           </Button>
           <span
@@ -29,7 +29,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
           <Button onClick={() => onSeeDetailsClick(task)}>
             <ChevronRightIcon />
           </Button>
-          <Button onClick={() => onDeleteTaskClick(task.id)}>
+          <Button onClick={() => onTaskDelete(task.id)}>
             <TrashIcon />
           </Button>
         </li>

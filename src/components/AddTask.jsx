@@ -2,7 +2,7 @@ import { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 
-function AddTask({ onTaskAddSubmit }) {
+function AddTask({ onTaskAdd }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
@@ -14,7 +14,7 @@ function AddTask({ onTaskAddSubmit }) {
       return;
     }
     setError("");
-    onTaskAddSubmit(title, description, expirationDate);
+    onTaskAdd(title, description, expirationDate);
     setTitle("");
     setDescription("");
     setExpirationDate("");

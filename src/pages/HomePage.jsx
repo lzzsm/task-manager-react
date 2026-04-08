@@ -14,24 +14,24 @@ export default function HomePage() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  function onTaskClick(taskId) {
+  function onTaskToggle(taskId) {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
-      )
+        task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task,
+      ),
     );
   }
 
-  function onDeleteTaskClick(taskId) {
+  function onTaskDelete(taskId) {
     const confirmDelete = window.confirm(
-      "Tem certeza que deseja excluir esta tarefa?"
+      "Tem certeza que deseja excluir esta tarefa?",
     );
     if (confirmDelete) {
       setTasks((prev) => prev.filter((task) => task.id !== taskId));
     }
   }
 
-  function onTaskAddSubmit(title, description, expirationDate) {
+  function onTaskAdd(title, description, expirationDate) {
     setTasks((prev) => [
       ...prev,
       { id: v4(), title, description, expirationDate, isCompleted: false },
@@ -42,11 +42,11 @@ export default function HomePage() {
     <div className="h-screen w-screen bg-slate-500 flex justify-center p-6">
       <div className="w-125 space-y-4">
         <Title>Gerenciador de Tarefas</Title>
-        <AddTask onTaskAddSubmit={onTaskAddSubmit} />
+        <AddTask onTaskAdd={onTaskAdd} />
         <Tasks
           tasks={tasks}
-          onTaskClick={onTaskClick}
-          onDeleteTaskClick={onDeleteTaskClick}
+          onTaskToggle={onTaskToggle}
+          onTaskDelete={onTaskDelete}
         />
       </div>
     </div>
