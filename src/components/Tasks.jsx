@@ -22,7 +22,7 @@ function Tasks({ tasks, onTaskToggle, onTaskDelete }) {
             {task.isCompleted ? <SquareCheckBig /> : <Square />}
           </Button>
           <span
-            className={`bg-slate-400 text-left w-full flex items-center text-white p-2 rounded-md ${task.isCompleted ? "line-through" : ""}`}
+            className={`bg-slate-400 text-left flex-1 min-w-0 truncate text-white p-2 rounded-md ${task.isCompleted ? "line-through" : ""}`}
           >
             {task.title}
           </span>
