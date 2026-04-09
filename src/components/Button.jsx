@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 function Button({
   children,
   className = "",
@@ -9,7 +11,7 @@ function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`bg-slate-400 text-white p-2 rounded-md ${className}`}
+      className={twMerge("bg-slate-400 text-white p-2 rounded-md", className)}
       {...rest}
     >
       {children}

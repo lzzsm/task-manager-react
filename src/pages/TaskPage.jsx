@@ -18,7 +18,7 @@ function TaskPage() {
     return (
       <div className="h-screen w-screen bg-slate-500 p-6 flex justify-center">
         <div className="space-y-6 w-125 flex flex-col items-center justify-center">
-          <Title>Tarefa não encontrada.</Title>
+          <Title as="h2">Tarefa não encontrada.</Title>
           <Button
             onClick={() => navigate("/")}
             className="text-center w-50 flex justify-center items-center gap-2"
@@ -40,11 +40,11 @@ function TaskPage() {
           >
             <ChevronLeftIcon />
           </Button>
-          <Title>Detalhes da Tarefa</Title>
+          <Title as="h2">Detalhes da Tarefa</Title>
         </div>
 
         <div className="bg-slate-200 p-4 rounded-md space-y-4">
-          <h2 className="text-xl font-bold text-slate-600">{task.title}</h2>
+          <h3 className="text-xl font-bold text-slate-600">{task.title}</h3>
           <p className="text-slate-600">
             <b>Data de Expiração:</b> {formattedDate}
           </p>

@@ -23,12 +23,7 @@ export default function HomePage() {
   }
 
   function onTaskDelete(taskId) {
-    const confirmDelete = window.confirm(
-      "Tem certeza que deseja excluir esta tarefa?",
-    );
-    if (confirmDelete) {
-      setTasks((prev) => prev.filter((task) => task.id !== taskId));
-    }
+    setTasks((prev) => prev.filter((task) => task.id !== taskId));
   }
 
   function onTaskAdd(title, description, expirationDate) {

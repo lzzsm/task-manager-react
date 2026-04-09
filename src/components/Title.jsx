@@ -1,8 +1,10 @@
-function Title({ children }) {
+function Title({ children, as = "h1" }) {
+  const Tag = as;
+
   return (
-    <h1 className="text-3xl font-bold text-slate-100 text-center">
+    <Tag className="text-3xl font-bold text-slate-100 text-center">
       {children}
-    </h1>
+    </Tag>
   );
 }
 

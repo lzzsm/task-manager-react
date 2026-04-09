@@ -5,11 +5,26 @@ import {
   TrashIcon,
   ClipboardList,
 } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
 function Tasks({ tasks, onTaskToggle, onTaskDelete }) {
   const navigate = useNavigate();
+  const [confirmingId, setConfirmingId] = useState(null);
+
+  function handleDeleteClick(taskId) {
+    setConfirmingId(taskId);
+  }
+
+  function handleConfirmDelete(taskId) {
+    onTaskDelete(taskId);
+    setConfirmingId(null);
+  }
+
+  function handleCancelDelete() {
+    setConfirmingId(null);
+  }
 
   if (tasks.length === 0) {
     return (
@@ -39,18 +54,40 @@ function Tasks({ tasks, onTaskToggle, onTaskDelete }) {
           >
             {task.title}
           </span>
-          <Button
-            onClick={() => navigate(`/task/${task.id}`)}
-            aria-label={`Ver detalhes de ${task.title}`}
-          >
-            <ChevronRightIcon />
-          </Button>
-          <Button
-            onClick={() => onTaskDelete(task.id)}
-            aria-label={`Excluir tarefa ${task.title}`}
-          >
-            <TrashIcon />
-          </Button>
+
+          {confirmingId === task.id ? (
+            <>
+              <Button
+                onClick={handleCancelDelete}
+                className="bg-slate-400 text-white text-xs px-3 font-medium"
+                aria-label="Cancelar exclusão"
+              >
+                Cancelar
+              </Button>
+              <Button
+                onClick={() => handleConfirmDelete(task.id)}
+                className="bg-red-500 text-white text-xs px-3 font-medium"
+                aria-label="Confirmar exclusão"
+              >
+                Excluir
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                onClick={() => navigate(`/task/${task.id}`)}
+                aria-label={`Ver detalhes de ${task.title}`}
+              >
+                <ChevronRightIcon />
+              </Button>
+              <Button
+                onClick={() => handleDeleteClick(task.id)}
+                aria-label={`Excluir tarefa ${task.title}`}
+              >
+                <TrashIcon />
+              </Button>
+            </>
+          )}
         </li>
       ))}
     </ul>
