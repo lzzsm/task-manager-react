@@ -13,6 +13,16 @@ function AddTask({ onTaskAdd }) {
       setError("Preencha o título, a descrição e a data de expiração.");
       return;
     }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const selected = new Date(expirationDate + "T00:00:00");
+
+    if (selected < today) {
+      setError("A data de expiração não pode ser no passado.");
+      return;
+    }
+
     setError("");
     onTaskAdd(title, description, expirationDate);
     setTitle("");
