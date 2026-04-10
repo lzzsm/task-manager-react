@@ -1,16 +1,30 @@
-# React + Vite
+# ✅ Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Gerenciador de tarefas construído com React, Vite e Tailwind CSS. Projeto desenvolvido com foco em boas práticas de código, acessibilidade e UI consistente.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** — componentes funcionais, hooks e roteamento com React Router v7
+- **Tailwind CSS v4** — estilização utility-first com tema escuro customizado
+- **Vite** — bundler e dev server
+- **uuid** — geração de IDs únicos por tarefa
+- **tailwind-merge** — merge seguro de classes Tailwind conflitantes
+- **lucide-react** — ícones
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Adicionar tarefas com título, descrição e data de expiração
+- Validação de formulário com feedback de erro
+- Marcar tarefas como concluídas
+- Exclusão com confirmação inline
+- Visualização de detalhes da tarefa em página dedicada
+- Contador de tarefas concluídas em tempo real
+- Persistência via `localStorage`
+- Estado vazio ilustrado quando não há tarefas
 
-## Expanding the ESLint configuration
+## Como rodar
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
