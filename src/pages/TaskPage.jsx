@@ -3,11 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import Title from "../components/Title";
 import Button from "../components/Button";
 
-function TaskPage() {
+function TaskPage({ tasks }) {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   const task = tasks.find((task) => task.id === id);
 
   const formattedDate = task?.expirationDate
