@@ -11,7 +11,10 @@ function Button({
     <button
       type={type}
       onClick={onClick}
-      className={twMerge("bg-slate-400 text-white p-2 rounded-md", className)}
+      className={twMerge(
+        "border border-indigo-500/40 bg-transparent text-slate-300 px-3 py-2 rounded-md transition-all duration-150 hover:border-indigo-400 hover:text-white hover:bg-indigo-500/10 active:scale-95 cursor-pointer",
+        className,
+      )}
       {...rest}
     >
       {children}

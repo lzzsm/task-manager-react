@@ -1,4 +1,4 @@
-import { ChevronLeftIcon } from "lucide-react";
+import { ChevronLeftIcon, CalendarIcon, AlignLeftIcon } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import Title from "../components/Title";
 import Button from "../components/Button";
@@ -15,12 +15,12 @@ function TaskPage({ tasks }) {
 
   if (!task) {
     return (
-      <div className="h-screen w-screen bg-slate-500 p-6 flex justify-center">
-        <div className="space-y-6 w-125 flex flex-col items-center justify-center">
+      <div className="min-h-screen w-screen bg-[#070d1a] p-6 flex justify-center">
+        <div className="space-y-6 w-full max-w-lg flex flex-col items-center justify-center">
           <Title as="h2">Tarefa não encontrada.</Title>
           <Button
             onClick={() => navigate("/")}
-            className="text-center w-50 flex justify-center items-center gap-2"
+            className="border-indigo-500/50 text-indigo-300 hover:bg-indigo-500/20"
           >
             Voltar para o início
           </Button>
@@ -30,24 +30,47 @@ function TaskPage({ tasks }) {
   }
 
   return (
-    <div className="h-screen w-screen bg-slate-500 p-6">
-      <div className="w-125 mx-auto space-y-4">
-        <div className="flex justify-center relative mb-6">
+    <div className="min-h-screen w-screen bg-[#070d1a] p-6">
+      <div className="w-full max-w-lg mx-auto space-y-5">
+        <div className="flex items-center gap-3">
           <Button
             onClick={() => navigate(-1)}
-            className="absolute left-0 top-0 bottom-0 text-slate-100 bg-transparent"
+            aria-label="Voltar"
+            className="border-transparent hover:border-transparent hover:bg-indigo-500/10 p-1 text-slate-400 hover:text-white"
           >
-            <ChevronLeftIcon />
+            <ChevronLeftIcon size={20} />
           </Button>
-          <Title as="h2">Detalhes da Tarefa</Title>
+          <Title as="h2">Detalhes da tarefa</Title>
         </div>
 
-        <div className="bg-slate-200 p-4 rounded-md space-y-4">
-          <h3 className="text-xl font-bold text-slate-600">{task.title}</h3>
-          <p className="text-slate-600">
-            <b>Data de Expiração:</b> {formattedDate}
-          </p>
-          <p className="text-slate-600">{task.description}</p>
+        <div className="bg-[#0d1526] border border-indigo-500/20 rounded-md p-5 space-y-5">
+          <div>
+            <p className="text-xs font-medium text-indigo-400 uppercase tracking-widest mb-1">
+              Título
+            </p>
+            <h3
+              className={`text-lg font-semibold ${task.isCompleted ? "line-through text-slate-500" : "text-white"}`}
+            >
+              {task.title}
+            </h3>
+          </div>
+
+          <div className="flex items-center gap-2 text-slate-400 text-sm">
+            <CalendarIcon size={14} className="text-indigo-400" />
+            <span>{formattedDate}</span>
+          </div>
+
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <AlignLeftIcon size={14} className="text-indigo-400" />
+              <p className="text-xs font-medium text-indigo-400 uppercase tracking-widest">
+                Descrição
+              </p>
+            </div>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              {task.description}
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -28,17 +28,20 @@ function Tasks({ tasks, onTaskToggle, onTaskDelete }) {
 
   if (tasks.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center gap-3 p-6 bg-slate-200 rounded-md shadow text-slate-400">
-        <ClipboardList size={40} />
+      <div className="flex flex-col items-center justify-center gap-3 p-10 bg-[#0d1526] border border-indigo-500/20 rounded-md text-slate-600">
+        <ClipboardList size={36} />
         <p className="text-sm">Nenhuma tarefa adicionada ainda.</p>
       </div>
     );
   }
 
   return (
-    <ul className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
+    <ul className="space-y-2 p-5 bg-[#0d1526] border border-indigo-500/20 rounded-md">
       {tasks.map((task) => (
-        <li key={task.id} className="flex gap-2">
+        <li
+          key={task.id}
+          className="flex gap-2 items-center p-2 rounded-md border border-transparent hover:border-indigo-500/20 hover:bg-indigo-500/5 transition-all duration-150"
+        >
           <Button
             onClick={() => onTaskToggle(task.id)}
             aria-label={
@@ -46,11 +49,21 @@ function Tasks({ tasks, onTaskToggle, onTaskDelete }) {
                 ? "Marcar como pendente"
                 : "Marcar como concluída"
             }
+            className="border-transparent hover:border-transparent hover:bg-transparent p-1 text-indigo-400 hover:text-indigo-300"
           >
-            {task.isCompleted ? <SquareCheckBig /> : <Square />}
+            {task.isCompleted ? (
+              <SquareCheckBig size={18} />
+            ) : (
+              <Square size={18} />
+            )}
           </Button>
+
           <span
-            className={`bg-slate-400 text-left flex-1 min-w-0 truncate text-white p-2 rounded-md ${task.isCompleted ? "line-through" : ""}`}
+            className={`flex-1 min-w-0 truncate text-sm ${
+              task.isCompleted
+                ? "line-through text-slate-600"
+                : "text-slate-300"
+            }`}
           >
             {task.title}
           </span>
@@ -59,14 +72,14 @@ function Tasks({ tasks, onTaskToggle, onTaskDelete }) {
             <>
               <Button
                 onClick={handleCancelDelete}
-                className="bg-slate-400 text-white text-xs px-3 font-medium"
+                className="text-xs px-3 border-slate-600/60 text-slate-400 hover:bg-slate-500/20 hover:border-slate-500 hover:text-slate-300"
                 aria-label="Cancelar exclusão"
               >
                 Cancelar
               </Button>
               <Button
                 onClick={() => handleConfirmDelete(task.id)}
-                className="bg-red-500 text-white text-xs px-3 font-medium"
+                className="text-xs px-3 border-red-500/50 text-red-400 hover:bg-red-500/20 hover:border-red-400 hover:text-red-300"
                 aria-label="Confirmar exclusão"
               >
                 Excluir
@@ -77,14 +90,16 @@ function Tasks({ tasks, onTaskToggle, onTaskDelete }) {
               <Button
                 onClick={() => navigate(`/task/${task.id}`)}
                 aria-label={`Ver detalhes de ${task.title}`}
+                className="border-transparent hover:border-transparent hover:bg-transparent p-1 text-slate-500 hover:text-slate-300"
               >
-                <ChevronRightIcon />
+                <ChevronRightIcon size={18} />
               </Button>
               <Button
                 onClick={() => handleDeleteClick(task.id)}
                 aria-label={`Excluir tarefa ${task.title}`}
+                className="border-transparent hover:border-transparent hover:bg-transparent p-1 text-slate-500 hover:text-red-400"
               >
-                <TrashIcon />
+                <TrashIcon size={18} />
               </Button>
             </>
           )}

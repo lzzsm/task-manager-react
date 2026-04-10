@@ -2,7 +2,7 @@ function Title({ children, as = "h1" }) {
   const Tag = as;
 
   return (
-    <Tag className="text-3xl font-bold text-slate-100 text-center">
+    <Tag className="text-2xl font-semibold text-white tracking-tight">
       {children}
     </Tag>
   );

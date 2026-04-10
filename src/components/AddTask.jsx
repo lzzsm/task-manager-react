@@ -31,16 +31,19 @@ function AddTask({ onTaskAdd }) {
   }
 
   return (
-    <div className="space-y-4 p-6 bg-slate-200 rounded-md shadow flex flex-col">
+    <div className="space-y-3 p-5 bg-[#0d1526] border border-indigo-500/20 rounded-md">
+      <p className="text-xs font-medium text-indigo-400 uppercase tracking-widest">
+        Nova tarefa
+      </p>
       <Input
         type="text"
-        placeholder="Digite o título da tarefa"
+        placeholder="Título"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <Input
         type="text"
-        placeholder="Digite a descrição da tarefa"
+        placeholder="Descrição"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
@@ -49,8 +52,13 @@ function AddTask({ onTaskAdd }) {
         value={expirationDate}
         onChange={(e) => setExpirationDate(e.target.value)}
       />
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-      <Button onClick={handleSubmit}>Adicionar</Button>
+      {error && <p className="text-red-400 text-xs">{error}</p>}
+      <Button
+        onClick={handleSubmit}
+        className="w-full justify-center border-indigo-500/60 text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400 hover:text-indigo-200"
+      >
+        Adicionar tarefa
+      </Button>
     </div>
   );
 }
