@@ -1,28 +1,28 @@
-# ✅ Task Manager
+# Task Manager
 
-Gerenciador de tarefas construído com React, Vite e Tailwind CSS. Projeto desenvolvido com foco em boas práticas de código, acessibilidade e UI consistente.
+A clean and intuitive task management application built with React, Vite, and Tailwind CSS. This project emphasizes clean code practices, accessibility, and a consistent, modern user interface.
 
-## Stack
+## Tech Stack
 
-- **React 19** — componentes funcionais, hooks e roteamento com React Router v7
-- **Tailwind CSS v4** — estilização utility-first com tema escuro customizado
-- **Vite** — bundler e dev server
-- **uuid** — geração de IDs únicos por tarefa
-- **tailwind-merge** — merge seguro de classes Tailwind conflitantes
-- **lucide-react** — ícones
+- React 19 — functional components, hooks, and routing with React Router v7
+- Tailwind CSS v4 — utility-first styling with a custom dark theme
+- Vite — fast bundling and development server
+- uuid — unique ID generation for each task
+- tailwind-merge — safe merging of conflicting Tailwind classes
+- lucide-react — scalable, customizable icon set
 
-## Funcionalidades
+## Features
 
-- Adicionar tarefas com título, descrição e data de expiração
-- Validação de formulário com feedback de erro
-- Marcar tarefas como concluídas
-- Exclusão com confirmação inline
-- Visualização de detalhes da tarefa em página dedicada
-- Contador de tarefas concluídas em tempo real
-- Persistência via `localStorage`
-- Estado vazio ilustrado quando não há tarefas
+- Add tasks with title, description, and due date
+- Form validation with clear error feedback
+- Mark tasks as completed
+- Delete tasks with an inline confirmation prompt
+- View task details on a dedicated page
+- Real-time counter of completed tasks
+- Data persistence using localStorage
+- Illustrated empty state when no tasks exist
 
-## Como rodar
+## Getting Started
 
 ```bash
 npm install
