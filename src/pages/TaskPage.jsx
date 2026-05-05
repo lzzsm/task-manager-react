@@ -2,16 +2,14 @@ import { ChevronLeftIcon, CalendarIcon, AlignLeftIcon } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import Title from "../components/Title";
 import Button from "../components/Button";
+import { useTasks } from "../hooks/useTasks";
 
-function TaskPage({ tasks }) {
+export default function TaskPage() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { tasks } = useTasks();
 
   const task = tasks.find((task) => task.id === id);
-
-  const formattedDate = task?.expirationDate
-    ? new Date(task.expirationDate + "T00:00:00").toLocaleDateString("pt-BR")
-    : "Sem data";
 
   if (!task) {
     return (
@@ -28,6 +26,10 @@ function TaskPage({ tasks }) {
       </div>
     );
   }
+
+  const formattedDate = task.expirationDate
+    ? new Date(task.expirationDate + "T00:00:00").toLocaleDateString("pt-BR")
+    : "Sem data";
 
   return (
     <div className="min-h-screen w-screen bg-[#070d1a] p-6">
@@ -76,5 +78,3 @@ function TaskPage({ tasks }) {
     </div>
   );
 }
-
-export default TaskPage;

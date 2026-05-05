@@ -20,7 +20,7 @@ export default function App() {
             />
           }
         />
-        <Route path="/task/:id" element={<TaskPage tasks={tasks} />} />
+        <Route path="/task/:id" element={<TaskPage />} />
       </Routes>
     </BrowserRouter>
   );
