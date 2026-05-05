@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
-import { v4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
+import { STORAGE_KEY } from "../constants/storage";
 
 export function useTasks() {
   const [tasks, setTasks] = useState(() => {
-    const stored = localStorage.getItem("tasks");
-    return stored ? JSON.parse(stored) : [];
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   }, [tasks]);
 
   function onTaskToggle(taskId) {
@@ -26,7 +31,7 @@ export function useTasks() {
   function onTaskAdd(title, description, expirationDate) {
     setTasks((prev) => [
       ...prev,
-      { id: v4(), title, description, expirationDate, isCompleted: false },
+      { id: uuidv4(), title, description, expirationDate, isCompleted: false },
     ]);
   }
 
