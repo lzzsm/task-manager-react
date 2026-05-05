@@ -4,7 +4,8 @@ import TaskPage from "./pages/TaskPage";
 import { useTasks } from "./hooks/useTasks";
 
 export default function App() {
-  const { tasks, onTaskAdd, onTaskToggle, onTaskDelete } = useTasks();
+  const { tasks, onTaskAdd, onTaskToggle, onTaskDelete, onTaskEdit } =
+    useTasks();
 
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ export default function App() {
               onTaskAdd={onTaskAdd}
               onTaskToggle={onTaskToggle}
               onTaskDelete={onTaskDelete}
+              onTaskEdit={onTaskEdit}
             />
           }
         />

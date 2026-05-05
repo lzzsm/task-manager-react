@@ -35,7 +35,23 @@ export function useTasks() {
     ]);
   }
 
+  function onTaskEdit(taskId, title, description, expirationDate) {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === taskId
+          ? { ...task, title, description, expirationDate }
+          : task,
+      ),
+    );
+  }
+
   const sortedTasks = [...tasks].sort((a, b) => a.isCompleted - b.isCompleted);
 
-  return { tasks: sortedTasks, onTaskAdd, onTaskToggle, onTaskDelete };
+  return {
+    tasks: sortedTasks,
+    onTaskAdd,
+    onTaskToggle,
+    onTaskDelete,
+    onTaskEdit,
+  };
 }
