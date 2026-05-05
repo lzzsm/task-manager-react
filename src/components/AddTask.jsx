@@ -40,6 +40,13 @@ function AddTask({ onTaskAdd }) {
     };
   }
 
+  function handleEnterSubmit(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      e.target.form.requestSubmit();
+    }
+  }
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -57,17 +64,19 @@ function AddTask({ onTaskAdd }) {
         onChange={handleChange(setTitle)}
       />
       <Textarea
-        placeholder="Descrição"
+        placeholder="Descrição (Shift+Enter para quebrar linha)"
         aria-label="Descrição da tarefa"
         rows={3}
         value={description}
         onChange={handleChange(setDescription)}
+        onKeyDown={handleEnterSubmit}
       />
       <Input
         type="date"
         aria-label="Data de expiração"
         value={expirationDate}
         onChange={handleChange(setExpirationDate)}
+        onKeyDown={handleEnterSubmit}
       />
       {error && (
         <p className="text-red-400 text-xs" role="alert">

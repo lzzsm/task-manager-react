@@ -35,5 +35,7 @@ export function useTasks() {
     ]);
   }
 
-  return { tasks, onTaskAdd, onTaskToggle, onTaskDelete };
+  const sortedTasks = [...tasks].sort((a, b) => a.isCompleted - b.isCompleted);
+
+  return { tasks: sortedTasks, onTaskAdd, onTaskToggle, onTaskDelete };
 }
