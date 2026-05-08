@@ -56,9 +56,3 @@ npm test          # watch mode
 npm run coverage  # coverage report
 ```
 
-## Linting
-
-```bash
-npm run lint
-```
-
