@@ -2,12 +2,12 @@ import { ChevronLeftIcon, CalendarIcon, AlignLeftIcon } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import Title from "../components/Title";
 import Button from "../components/Button";
-import { useTasks } from "../hooks/useTasks";
+import { useTasksContext } from "../hooks/useTasksContext";
 
 export default function TaskPage() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { tasks } = useTasks();
+  const { tasks } = useTasksContext();
 
   const task = tasks.find((task) => task.id === id);
 

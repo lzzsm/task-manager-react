@@ -10,13 +10,10 @@ import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import ExpirationBadge from "./ExpirationBadge";
 import TaskEditForm from "./TaskEditForm";
+import { useTasksContext } from "../hooks/useTasksContext";
 
-export default function TaskItem({
-  task,
-  onTaskToggle,
-  onTaskDelete,
-  onTaskEdit,
-}) {
+export default function TaskItem({ task }) {
+  const { onTaskToggle, onTaskDelete, onTaskEdit } = useTasksContext();
   const navigate = useNavigate();
   const [isConfirming, setIsConfirming] = useState(false);
   const [isEditing, setIsEditing] = useState(false);

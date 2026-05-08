@@ -4,7 +4,7 @@ A clean and intuitive task management application built with React, Vite, and Ta
 
 ## Tech Stack
 
-- React 19 — functional components, hooks, and routing with React Router v7
+- React 19 — functional components, hooks, Context API, and routing with React Router v7
 - Tailwind CSS v4 — utility-first styling with a custom dark theme
 - Vite — fast bundling and development server
 - Motion — animation library for smooth list transitions
@@ -19,12 +19,26 @@ A clean and intuitive task management application built with React, Vite, and Ta
 - Filter tasks by All, Pending, or Completed
 - Expiration badges — highlights tasks due today or tomorrow, and overdue tasks
 - Form validation with clear error feedback
+- Enter to submit from any field — Shift+Enter for line breaks in description
+- Mark tasks as completed — completed tasks are sorted to the bottom
 - Delete tasks with an inline confirmation prompt
 - View task details on a dedicated page
 - Real-time counter of completed tasks
 - Data persistence using localStorage
-- Animated list with smooth entry, exit, and reorder transitions
+- Animated list with smooth reorder transitions
 - Illustrated empty state when no tasks exist
+
+## Project Structure
+
+```
+src/
+  contexts/       # TasksContext and TasksProvider
+  hooks/          # useTasks, useTasksContext and their tests
+  constants/      # storage and filter constants
+  components/     # reusable UI components
+  pages/          # HomePage and TaskPage
+  test/           # global test setup
+```
 
 ## Getting Started
 
@@ -48,4 +62,3 @@ npm run coverage  # coverage report
 npm run lint
 ```
 
-Includes `eslint-plugin-jsx-a11y` for static accessibility checks.

@@ -2,8 +2,10 @@ import { useState } from "react";
 import Input from "./Input";
 import Textarea from "./Textarea";
 import Button from "./Button";
+import { useTasksContext } from "../hooks/useTasksContext";
 
-function AddTask({ onTaskAdd }) {
+function AddTask() {
+  const { onTaskAdd } = useTasksContext();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [expirationDate, setExpirationDate] = useState("");

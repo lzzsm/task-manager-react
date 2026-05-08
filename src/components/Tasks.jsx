@@ -3,13 +3,7 @@ import { ClipboardList } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import TaskItem from "./TaskItem";
 
-export default function Tasks({
-  tasks,
-  onTaskToggle,
-  onTaskDelete,
-  onTaskEdit,
-  listKey,
-}) {
+export default function Tasks({ tasks, listKey }) {
   if (tasks.length === 0) {
     return (
       <motion.div
@@ -33,12 +27,7 @@ export default function Tasks({
             transition={{ duration: 0.18 }}
             className="rounded-md border border-transparent hover:border-indigo-500/20 hover:bg-indigo-500/5 transition-colors duration-150"
           >
-            <TaskItem
-              task={task}
-              onTaskToggle={onTaskToggle}
-              onTaskDelete={onTaskDelete}
-              onTaskEdit={onTaskEdit}
-            />
+            <TaskItem task={task} />
           </motion.li>
         ))}
       </AnimatePresence>

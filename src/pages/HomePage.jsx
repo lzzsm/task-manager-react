@@ -2,6 +2,7 @@ import { useState } from "react";
 import AddTask from "../components/AddTask";
 import Tasks from "../components/Tasks";
 import Title from "../components/Title";
+import { useTasksContext } from "../hooks/useTasksContext";
 import {
   FILTER_ALL,
   FILTER_PENDING,
@@ -14,13 +15,8 @@ const FILTERS = [
   { value: FILTER_COMPLETED, label: "Concluídas" },
 ];
 
-export default function HomePage({
-  tasks,
-  onTaskAdd,
-  onTaskToggle,
-  onTaskDelete,
-  onTaskEdit,
-}) {
+export default function HomePage() {
+  const { tasks } = useTasksContext();
   const [filter, setFilter] = useState(FILTER_ALL);
 
   const completed = tasks.filter((t) => t.isCompleted).length;
@@ -44,7 +40,7 @@ export default function HomePage({
           )}
         </div>
 
-        <AddTask onTaskAdd={onTaskAdd} />
+        <AddTask />
 
         {tasks.length > 0 && (
           <div className="flex gap-2">
@@ -64,13 +60,7 @@ export default function HomePage({
           </div>
         )}
 
-        <Tasks
-          tasks={filteredTasks}
-          listKey={filter}
-          onTaskToggle={onTaskToggle}
-          onTaskDelete={onTaskDelete}
-          onTaskEdit={onTaskEdit}
-        />
+        <Tasks tasks={filteredTasks} listKey={filter} />
       </div>
     </div>
   );
